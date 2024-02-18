@@ -13,9 +13,11 @@ class YoutubeController extends Controller
 
     public function getListByChannelId(string $channelId)
     {
+        $youtube_api_key = config('youtubeapi.youtube_api_key');
+
         // Googleへの接続情報のインスタンスを作成と設定
         $client = new Google_Client();
-        $client->setDeveloperKey(env('GOOGLE_API_KEY'));
+        $client->setDeveloperKey($youtube_api_key);
 
         // 接続情報のインスタンスを用いてYoutubeのデータへアクセス可能なインスタンスを生成
         $youtube = new Google_Service_YouTube($client);
